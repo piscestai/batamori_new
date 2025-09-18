@@ -1,0 +1,6 @@
+/* ==== mixin ==== */
+@mixin pseudo-ele {
+  display: block;
+  content: "";
+  width: 100%;
+}

@@ -1,0 +1,168 @@
+@use "sass:math";
+@use "sass:color";
+@use "../mixin/variable" as *;
+@use "../mixin/mixin" as *;
+
+/* ==== 全站共用樣式 ==== */
+ol.reset, ul.reset, li.reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.clearboth {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+    height: 0;
+    font-size: 0;
+    overflow: hidden;
+  }
+}
+
+.hidden-ele {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(0px 0px 99.9% 99.9%);
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  overflow: hidden;
+}
+
+.txt {
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
+  &-justify {
+    text-align: justify;
+    text-justify: inter-ideograph;
+  }
+}
+
+/* flex */
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.news-btn {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 20;
+  bottom: 40px;
+  right: 28%;
+  padding: 0 16px;
+  width: 80px;
+  height: 80px;
+  color: $color-brown;
+  text-align: center;
+  line-height: 1.2;
+  border-radius: 100px;
+  background-color: $color-main;
+  box-shadow: 2px 4px $color-brown;
+  transition: box-shadow .35s, transform .35s;
+  &:hover {
+    color: $color-brown;
+    box-shadow: none;
+    transform: translate(2px, 4px);
+  }
+  i {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    background: url('../images/bell-ringing.svg') no-repeat center center;
+  }
+}
+
+@media (max-width: 1439px) {
+  .news-btn {
+    right: 23%;
+  }
+}
+
+@media (max-width: 991px) {
+  .news-btn {
+    right: 32px;
+    padding: 0 10px;
+    width: 60px;
+    height: 60px;
+    font-size: 1.4rem;
+    i {
+      top: -6px;
+      left: 0;
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .news-btn {
+    bottom: 65px;
+  }
+}
+
+/* 大標題 */
+.headline {
+  margin-bottom: max(30px, 2vw);
+  font-family: $font;
+  font-size: $box-title;
+  color: $color-brown;
+  font-weight: 700;
+  letter-spacing: .5rem;
+  text-align: center;
+}
+
+/* ==== 彈出視窗 ==== */
+.my-mfp-slide-bottom .zoom-anim-dialog {
+  opacity: 0;
+  transition: all 0.2s ease-out;
+  transform: translateY(-20px) perspective( 600px ) rotateX( 10deg );
+}
+
+/* animate in */
+.my-mfp-slide-bottom.mfp-ready .zoom-anim-dialog {
+  opacity: 1;
+  transform: translateY(0) perspective( 600px ) rotateX( 0 );
+}
+
+/* animate out */
+.my-mfp-slide-bottom.mfp-removing .zoom-anim-dialog {
+  opacity: 0;
+  transform: translateY(-10px) perspective( 600px ) rotateX( 10deg );
+}
+
+/* Dark overlay, start state */
+.my-mfp-slide-bottom.mfp-bg {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+/* animate in */
+.my-mfp-slide-bottom.mfp-ready.mfp-bg {
+  opacity: .85;
+}
+
+/* animate out */
+.my-mfp-slide-bottom.mfp-removing.mfp-bg {
+  opacity: 0;
+}
+
+.mfp-close-btn-in .mfp-close {
+  top: -45px;
+  right: 0;
+  font-family: 'sans-serif' !important;
+  font-size: 4.2rem !important;
+  color: #fff !important;
+  opacity: 1;
+}

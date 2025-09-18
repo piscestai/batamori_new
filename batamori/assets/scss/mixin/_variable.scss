@@ -1,0 +1,35 @@
+/* ==== 宣告 全域設定 ==== */
+// 全域預設
+$font-family-default: "Inter", 'sans-serif', 'Noto Sans TC', 'Microsoft JhengHei', '微軟正黑體';
+$size-default: 1.6rem;
+$color-default: #111111;
+$color-bg-default: #FFFCF0;
+
+// 網站色 //
+$color-main: #FDE115; //主色
+$color-secon: #92D1E2; //次要色
+$color-brown: #533131;
+$color-camel: #A97C2F;
+$color-beige: #DCC893;
+$color-red: #E3484A;
+$color-blue: rgba(16,85,149,1);
+
+// 字型
+$font: "Noto Serif TC", 'sans-serif';
+
+// 字型大小
+$box-title: clamp(2.4rem, 2.4vw, 3.4rem);
+
+:root {
+  --line-height-default: 2;
+
+  // 框架
+  --padding-spac: 25px;
+  --container-720: calc(670px + (var(--padding-spac) * 2));
+}
+
+@media (max-width: 767px) {
+  :root {
+    --line-height-default: 1.8;
+  }
+}

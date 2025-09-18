@@ -1,0 +1,146 @@
+@use "sass:math";
+@use "sass:color";
+@use "../mixin/variable" as *;
+
+/* lenis */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ==== 架構 ==== */
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-track {
+  margin: 0;
+  border-radius: 0;
+  background: rgba(255, 255, 255, 1);
+  -webkit-box-shadow: none;
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background: $color-blue;
+  -webkit-box-shadow: none;
+}
+body:hover::-webkit-scrollbar-thumb {
+  background: $color-blue;
+}
+
+html, body {
+  height: 100%;
+}
+
+html.is-on {
+  overflow: hidden !important;
+}
+
+.g-wrap {
+  width: 100%;
+}
+
+.container-720 {
+  position: relative;
+  z-index: 5;
+  margin: 0 auto;
+  padding: 0 var(--padding-spac);
+  max-width: var(--container-720);
+}
+
+.g-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $color-main;
+  &::before {
+    display: block;
+    content: "";
+    padding-bottom: 17.848%;
+    width: 100%;
+  }
+  &__left, &__right {
+    position: absolute;
+    top: 0;
+    width: calc((100% - 45%) / 2);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+  }
+  &__left {
+    left: 0;
+    background-image: url('../images/bg_left.jpg');
+    background-position: 0 0;
+  }
+  &__right {
+    right: 0;
+    background-image: url('../images/bg_right.jpg');
+    background-position: right 0;
+  }
+  &__mask {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 115.84px;
+    background: url('../images/bg_mask.svg') repeat-x 0 0;
+    animation: ani_infinite 20s infinite linear;
+  }
+}
+
+@media (min-width: 1440px) {
+  .g-bg {
+    &__left, &__right {
+      width: calc((100% - 37.796%) / 2);
+    }
+  }
+}
+
+.g-main {
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+  width: 37.796%;
+  max-width: 720px;
+  background-color: #fff;
+  box-shadow: 0 0 26px rgba(0,0,0,.15);
+  transition: width .35s;
+  img {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@keyframes ani_infinite {
+  from { background-position: 0 0; }
+  to { background-position: -1920px 0; }
+}
+
+@media (max-width: 1439px) {
+  .g-main {
+    width: 45%;
+  }
+}
+
+@media (max-width: 991px) {
+  .g-bg {
+    display: none;
+  }
+  .g-main {
+    width: 100%;
+    max-width: 100%;
+  }
+}
